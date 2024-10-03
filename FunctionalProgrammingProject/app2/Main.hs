@@ -65,7 +65,8 @@ data Commands = Commands
 instance ToJSON Commands
 
 host :: String
-host = "http://bomberman.homedir.eu"
+-- host = "http://bomberman.homedir.eu"
+host = "http://localhost:3000"
 
 main :: IO ()
 main = do
@@ -92,7 +93,7 @@ main = do
 
 postCommands :: String -> Sess.Session -> Commands -> IO String
 postCommands uuid sess commands = do
-  r <- Sess.post sess (L.concat [host, "/v2/game/", uuid]) (toJSON commands)
+  r <- Sess.post sess (L.concat [host, "/v3/game/", uuid]) (toJSON commands)
   return $ cs $ r ^. responseBody
 
 draw :: Lib2.State -> IO ()

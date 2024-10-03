@@ -51,11 +51,7 @@ main = do
     lib3test4
     lib3test5
     lib3test6
-
     return()
-
-
-
 
 lib3test1 :: IO ()
 lib3test1 = do
@@ -100,11 +96,3 @@ lib3test6 = do
         
 e :: Either String a -> a
 e = E.either error id
-
-
-
-
-
-
-
-

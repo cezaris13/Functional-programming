@@ -6,10 +6,6 @@ author:              "Author name here"
 maintainer:          "example@example.com"
 copyright:           "2021 Author name here"
 
-extra-source-files:
-- README.md
-- ChangeLog.md
-
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
 # category:            Web
@@ -60,7 +56,7 @@ executables:
     - ansi-terminal
     - string-conversions
 
-  bomberman-server-client:
+  bomberman-server:
     main:                Main.hs
     source-dirs:         app4
     ghc-options:

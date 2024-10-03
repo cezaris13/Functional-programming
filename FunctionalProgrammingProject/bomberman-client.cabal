@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.4.
+-- This file has been generated from package.yaml by hpack version 0.35.1.
 --
 -- see: https://github.com/sol/hpack
 
@@ -13,11 +13,7 @@ author:         Author name here
 maintainer:     example@example.com
 copyright:      2021 Author name here
 license:        BSD3
-license-file:   LICENSE
 build-type:     Simple
-extra-source-files:
-    README.md
-    ChangeLog.md
 
 source-repository head
   type: git
@@ -103,7 +99,7 @@ executable bomberman-client-2
     , wreq
   default-language: Haskell2010
 
-executable bomberman-server-client
+executable bomberman-server
   main-is: Main.hs
   other-modules:
       Paths_bomberman_client

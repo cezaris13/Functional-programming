@@ -60,7 +60,8 @@ data Commands = Commands
 instance ToJSON Commands
 
 host :: String
-host = "http://bomberman.homedir.eu/v1"
+-- host = "http://bomberman.homedir.eu/v1"
+host = "http://localhost:3000"
 
 main :: IO ()
 main = do
@@ -73,7 +74,7 @@ main = do
     (const showCursor)
     ( \_ -> do
         sess <- Sess.newSession
-        response <- Sess.post sess (host ++ "/game/new/random") AT.emptyObject >>= asJSON
+        response <- Sess.post sess (host ++ "/v1/game/new/random") AT.emptyObject >>= asJSON
         let newGame = response ^. responseBody :: NewGame
         let initData = Lib1.InitData {gameWidth = width newGame, gameHeight = height newGame}
         initialState <- Lib1.init initData <$> postCommands (uuid newGame) sess (Commands FetchSurrounding Nothing)
@@ -83,7 +84,7 @@ main = do
 
 postCommands :: String -> Sess.Session -> Commands -> IO String
 postCommands uuid sess commands = do
-  r <- Sess.post sess (L.concat [host, "/game/", uuid]) (toJSON commands)
+  r <- Sess.post sess (L.concat [host, "/v3/game/", uuid]) (toJSON commands)
   return $ cs $ r ^. responseBody
 
 draw :: Lib1.State -> IO ()

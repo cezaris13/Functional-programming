@@ -224,7 +224,7 @@ moveBombermanIO gameDetails direction gameMaps = do
   let newGameDetails = gameDetails {gameBlocks = moveBomberman gameDetails direction}
   let newGameDetails1 = gameDetails {gameBlocks = moveGhost newGameDetails}
   atomically $ updateOneGame gameMaps newGameDetails1
-  print ("Bomberman moved to the:" ++ direction)
+  print ("Bomberman moved to the: " ++ direction)
 
 fetchSurroundings :: GameDetails -> TMVar [GameDetails] -> IO()
 fetchSurroundings gameDetails gameMaps = do
@@ -260,7 +260,7 @@ createNewGame :: String -> [String] -> TMVar[GameDetails] -> IO()
 createNewGame gameId initialMap gameMaps = do
   let newGame = GameDetails gameId (convertMapToGameBlocks initialMap) (getMapHeight initialMap, getMapWidth initialMap) True
   atomically $ addNewGameToList gameMaps newGame
-  print ("new game created, id:" ++ gameId)
+  print ("New game created, id:" ++ gameId)
 
 byteStringToString :: ByteString -> String
 byteStringToString input = Prelude.map (chr . fromEnum) (unpack input)
